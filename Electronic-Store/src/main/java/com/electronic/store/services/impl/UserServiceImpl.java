@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getAllUser(UserDto userDto) {
+    public List<UserDto> getAllUser() {
         List<User> users=userRepository.findAll();
         List<UserDto> dtoList=users.stream().map(user->entityToDto(user)).collect(Collectors.toList());
         return dtoList;
