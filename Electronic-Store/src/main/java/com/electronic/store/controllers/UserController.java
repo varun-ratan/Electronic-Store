@@ -35,8 +35,8 @@ public class UserController {
 
 
     //delete
-    @DeleteMapping("/delete")
-    public ResponseEntity<ApiResponseMessage> deleteUser(@RequestBody String userId)
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId)
     {
         userService.deleteUser(userId);
         ApiResponseMessage message=ApiResponseMessage.builder().message("User deleted successfully").build();
@@ -52,7 +52,7 @@ public class UserController {
 
     //get single
 
-    @GetMapping("/{userId}")
+    @GetMapping("/getSingleUser/{userId}")
     public ResponseEntity<UserDto> getUser(@PathVariable("userId") String userId)
     {
         UserDto user=userService.getUserById(userId);
