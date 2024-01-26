@@ -1,5 +1,6 @@
 package com.electronic.store.controllers;
 
+import com.electronic.store.dtos.ApiResponseMessage;
 import com.electronic.store.dtos.UserDto;
 import com.electronic.store.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,11 @@ public class UserController {
 
     //delete
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteUser(@RequestBody String userId)
+    public ResponseEntity<ApiResponseMessage> deleteUser(@RequestBody String userId)
     {
         userService.deleteUser(userId);
-        return new ResponseEntity<>("User deleted successfully",HttpStatus.OK);
+        ApiResponseMessage message=ApiResponseMessage.builder().message("User deleted successfully").build();
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
     //get all
